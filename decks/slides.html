@@ -16,6 +16,18 @@ class: title, center, middle
 ### Peter Pinch <br>  open edX lightning talk, 10/12/15
 ![logo](../assets/MIT_digitallearning_engdept_logo_2@2x.png)
 
+???
+
+Hi. I'm Peter Pinch, Associate Director of Engineering for the Office of 
+Digital Learning at MIT. I've been working edX for just about 3 years now
+
+I'm going to try to introduce two features that we've been working on at MIT,
+as well as two pieces of edX technical architecture that makes them work. 
+
+All in 10 minutes.
+
+We'll see how this goes. 
+
 ---
 
 class: big_bullets 
@@ -31,6 +43,18 @@ if FEATURES.get('INDIVIDUAL_DUE_DATES'):
         'courseware.student_field_overrides.IndividualStudentOverrideProvider',
     )
 ```
+
+???
+
+When you set the feature flag, it adds this field override provider to the 
+platform. 
+
+This is actually a pretty generic field override "student field overrides" but
+the feature flag also turns on a tab in the instructor dashboard.
+
+[change tabs to demo]
+
+And the instructor can choose the user, location and date
 
 ---
 
@@ -49,7 +73,19 @@ if FEATURES.get('CUSTOM_COURSES_EDX'):
     )
 ```
 
-<p style="font-size: small">Docs at http://edx.readthedocs.org/projects/edx-installing-configuring-and-running/en/latest/configuration/enable_ccx.html</sub>
+<p style="font-size: small">
+	Docs at 
+	http://edx.readthedocs.org/projects/edx-installing-configuring-and-running/en/latest/configuration/enable_ccx.html
+</p>
+
+??? 
+
+Unfortunately, I don't have time to demo CCX here now, but we have a screencast
+you can watch. 
+
+It's both a site feature and a course advanced feature. 
+
+It's more complex than IDDE so it adds an app as well as an override. 
 
 ---
 
@@ -61,6 +97,23 @@ class: big_bullets
 
 ### We want to modify some XBlock fields for some users. 
 	
+```python
+if FEATURES.get('INDIVIDUAL_DUE_DATES'):
+    FIELD_OVERRIDE_PROVIDERS += (
+        'courseware.student_field_overrides.IndividualStudentOverrideProvider',
+    )
+```
+
+```python
+if FEATURES.get('CUSTOM_COURSES_EDX'):
+    INSTALLED_APPS += ('ccx',)
+    FIELD_OVERRIDE_PROVIDERS += (
+        'ccx.overrides.CustomCoursesForEdxOverrideProvider',
+    )
+```
+
+
+
 ---
 
 class: big_bullets 
