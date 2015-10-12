@@ -17,7 +17,10 @@ class: big_bullets
 - site feature: uses feature flag
 
 ```python
-FEATURES['INDIVIDUAL_DUE_DATES'] = True
+if FEATURES.get('INDIVIDUAL_DUE_DATES'):
+    FIELD_OVERRIDE_PROVIDERS += (
+        'courseware.student_field_overrides.IndividualStudentOverrideProvider',
+    )
 ```
 
 ---
@@ -30,10 +33,14 @@ FEATURES['INDIVIDUAL_DUE_DATES'] = True
     - can't change course content
 
 ```python
-FEATURES['CUSTOM_COURSES_EDX'] = True
+if FEATURES.get('CUSTOM_COURSES_EDX'):
+    INSTALLED_APPS += ('ccx',)
+    FIELD_OVERRIDE_PROVIDERS += (
+        'ccx.overrides.CustomCoursesForEdxOverrideProvider',
+    )
 ```
 
-###### Docs: http://edx.readthedocs.org/projects/edx-installing-configuring-and-running/en/latest/configuration/enable_ccx.html
+<p style="font-size: small">Docs at http://edx.readthedocs.org/projects/edx-installing-configuring-and-running/en/latest/configuration/enable_ccx.html</sub>
 
 ---
 
