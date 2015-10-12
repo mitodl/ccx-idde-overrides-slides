@@ -1,7 +1,7 @@
 CCX talk slides
 =============================
 This project is intended to supply a convenient development environment for a 
-talk on "Custom Courses on edX (CCX)"
+lightning talk on "IDDE, CCX, Overrides and Custom Keys"
 
 
 How to build
