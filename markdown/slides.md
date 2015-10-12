@@ -1,0 +1,72 @@
+class: title, center, middle
+
+# IDDE, CCX, Overrides and Custom Keys
+## 2 advanced features <br> and their architecture
+
+
+### Peter Pinch <br>  open edX lightning talk, 10/12/15
+![logo](../assets/MIT_digitallearning_engdept_logo_2@2x.png)
+
+---
+
+class: big_bullets 
+
+# Individual Due Date Extensions (IDDE)
+
+- allows instructor to change due date on one problem for one student
+- site feature: uses feature flag
+
+```python
+FEATURES['INDIVIDUAL_DUE_DATES'] = True
+```
+
+---
+
+# Custom Courses on edX (CCX)
+
+- light-weight course reuse
+- CCX "coach" can set dates, remove sections
+    - can enroll students 
+    - can't change course content
+
+```python
+FEATURES['CUSTOM_COURSES_EDX'] = True
+```
+
+###### Docs: http://edx.readthedocs.org/projects/edx-installing-configuring-and-running/en/latest/configuration/enable_ccx.html
+
+---
+
+class: big_bullets 
+
+# Overrides for XBlock fields
+
+### What do these features have in common? 
+
+### We want to modify some XBlock fields for some users. 
+	
+---
+
+class: big_bullets 
+
+# IDDE Overrides
+
+![IDDE Overrides](../assets/idde-overrides.svg)
+
+---
+
+# CCX Overrides
+
+![IDDE Overrides](../assets/ccx-overrides.svg)
+
+---
+
+# Thank You!
+
+- Ike Chuang came up with the acronyms
+- Chris Rossi (Jazkarta) wrote IDDE (twice) 
+- Cale Pennington dreamed up overrides, and then actually made them work
+- Jazkarta (Chris Rossi, Carlos de la Guardia and Cris Ewing) wrote CCX
+- Dave Ormsbee persuaded us to create custom CCX keys
+- edX Engineering 
+- MIT ODL Engineering
